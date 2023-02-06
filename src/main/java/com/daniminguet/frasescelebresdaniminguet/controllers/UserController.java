@@ -1,12 +1,15 @@
 package com.daniminguet.frasescelebresdaniminguet.controllers;
 
+import com.daniminguet.frasescelebresdaniminguet.HashGenerator;
 import com.daniminguet.frasescelebresdaniminguet.models.Usuario;
 import com.daniminguet.frasescelebresdaniminguet.repo.IUsuarioDao;
 import com.daniminguet.frasescelebresdaniminguet.util.Log;
+import org.apache.catalina.filters.SetCharacterEncodingFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,6 +36,21 @@ public class UserController {
 
     @PostMapping("/add")
     public boolean addUser(@RequestBody Usuario usuario) {
+        for (Usuario user : repo.findAll()) {
+            if (user.getNombre().equals(usuario.getNombre())) {
+                return false;
+            }
+        }
+
+        String contrasenya = null;
+        try {
+            contrasenya = HashGenerator.getSHAString(usuario.getContrasenya());
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
+        usuario.setContrasenya(contrasenya);
+        usuario.setAdmin((byte) 0);
+
         try {
             Log.i("Nuevo Usuario: ", usuario.toString());
             repo.save(usuario);
@@ -71,7 +89,7 @@ public class UserController {
     public boolean login(@RequestBody Usuario user) {
         try {
             for (Usuario usuario: getUsers()) {
-                if (usuario.getNombre().equals(user.getNombre()) && usuario.getContrasenya().equals(user.getContrasenya())) {
+                if (usuario.getNombre().equals(user.getNombre()) && HashGenerator.getSHAString(user.getContrasenya()).equals(usuario.getContrasenya())) {
                     return true;
                 }
             }
