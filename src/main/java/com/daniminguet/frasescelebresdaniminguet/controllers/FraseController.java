@@ -1,13 +1,7 @@
 package com.daniminguet.frasescelebresdaniminguet.controllers;
 
-import com.daniminguet.frasescelebresdaniminguet.models.Autor;
-import com.daniminguet.frasescelebresdaniminguet.models.Categoria;
 import com.daniminguet.frasescelebresdaniminguet.models.Frase;
-import com.daniminguet.frasescelebresdaniminguet.models.Usuario;
-import com.daniminguet.frasescelebresdaniminguet.repo.IAutorDao;
-import com.daniminguet.frasescelebresdaniminguet.repo.ICategoriaDao;
 import com.daniminguet.frasescelebresdaniminguet.repo.IFraseDao;
-import com.daniminguet.frasescelebresdaniminguet.repo.IUsuarioDao;
 import com.daniminguet.frasescelebresdaniminguet.util.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -21,14 +15,6 @@ import java.util.Optional;
 public class FraseController {
     @Autowired
     private IFraseDao repo;
-
-    @Autowired
-    private IAutorDao repoAutor;
-
-    @Autowired
-    private ICategoriaDao repoCategoria;
-    @Autowired
-    private IUsuarioDao iUsuarioDao;
 
     @GetMapping("/all")
     public List<Frase> getFrases() {
