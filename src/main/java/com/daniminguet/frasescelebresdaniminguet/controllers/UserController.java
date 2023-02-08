@@ -86,17 +86,17 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public boolean login(@RequestBody Usuario user) {
+    public Usuario login(@RequestBody Usuario user) {
         try {
             for (Usuario usuario: getUsers()) {
-                if (usuario.getNombre().equals(user.getNombre()) && HashGenerator.getSHAString(user.getContrasenya()).equals(usuario.getContrasenya())) {
-                    return true;
+                if (usuario.getNombre().equals(user.getNombre()) && user.getContrasenya().equals(usuario.getContrasenya())) {
+                    return usuario;
                 }
             }
-            return false;
+            return null;
         }catch (Exception e) {
             e.printStackTrace();
-            return false;
+            return null;
         }
     }
 }
