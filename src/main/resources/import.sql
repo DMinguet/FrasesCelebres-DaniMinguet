@@ -54,3 +54,5 @@ INSERT INTO frase (fechaprogramada, texto, autor_id, categoria_id) VALUES ('2023
 INSERT INTO frase (fechaprogramada, texto, autor_id, categoria_id) VALUES ('2023-02-26', 'Después de aquellos que ocupan los primeros puestos, no conozco a nadie tan desgraciado como quien los envidia.', 1, 1);
 INSERT INTO frase (fechaprogramada, texto, autor_id, categoria_id) VALUES ('2023-02-27', 'Los niños adivinan qué personas los aman. Es un don natural que con el tiempo se pierde.', 2, 2);
 INSERT INTO frase (fechaprogramada, texto, autor_id, categoria_id) VALUES ('2023-02-28', 'Por nuestra codicia lo mucho es poco; por nuestra necesidad lo poco es mucho.', 3, 3);
+INSERT INTO usuario (nombre, contrasenya, admin) VALUES ('dani', 'd37c5e7961d0ed500ecf0475346027cf2d7010b7083c411f953936b0e38b1ab2', 1);
+INSERT INTO usuario (nombre, contrasenya, admin) VALUES ('prueba', 'd37c5e7961d0ed500ecf0475346027cf2d7010b7083c411f953936b0e38b1ab2', 0);

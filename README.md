@@ -1,12 +1,12 @@
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
-USE `mydb` ;
+CREATE SCHEMA IF NOT EXISTS `frasescelebres` DEFAULT CHARACTER SET utf8 ;
+USE `frasescelebres` ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`autor`
+-- Table `frasescelebres`.`autor`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`autor` ;
+DROP TABLE IF EXISTS `frasescelebres`.`autor`;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`autor` (
+CREATE TABLE IF NOT EXISTS `frasescelebres`.`autor` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(128) NULL,
   `nacimiento` INT NULL,
@@ -17,11 +17,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`categoria`
+-- Table `frasescelebres`.`categoria`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`categoria` ;
+DROP TABLE IF EXISTS `frasescelebres`.`categoria`;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`categoria` (
+CREATE TABLE IF NOT EXISTS `frasescelebres`.`categoria` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(128) NULL,
   PRIMARY KEY (`id`))
@@ -29,41 +29,41 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`frase`
+-- Table `frasescelebres`.`frase`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`frase` ;
+DROP TABLE IF EXISTS `frasescelebres`.`frase`;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`frase` (
+CREATE TABLE IF NOT EXISTS `frasescelebres`.`frase` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `texto` VARCHAR(300) NULL,
   `fechaprogramada` DATE NULL,
   `autor_id` INT NOT NULL,
   `categoria_id` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_frase_autor_idx` (`autor_id` ASC) VISIBLE,
-  INDEX `fk_frase_categoria1_idx` (`categoria_id` ASC) VISIBLE,
+  INDEX `fk_frase_autor_idx` (`autor_id` ASC),
+  INDEX `fk_frase_categoria1_idx` (`categoria_id` ASC),
   CONSTRAINT `fk_frase_autor`
     FOREIGN KEY (`autor_id`)
-    REFERENCES `mydb`.`autor` (`id`)
+    REFERENCES `frasescelebres`.`autor` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_frase_categoria1`
     FOREIGN KEY (`categoria_id`)
-    REFERENCES `mydb`.`categoria` (`id`)
+    REFERENCES `frasescelebres`.`categoria` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`usuario`
+-- Table `frasescelebres`.`usuario`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`usuario` ;
+DROP TABLE IF EXISTS `frasescelebres`.`usuario`;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`usuario` (
+CREATE TABLE IF NOT EXISTS `frasescelebres`.`usuario` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NULL,
-  `contrasenya` VARCHAR(45) NULL,
+  `contrasenya` VARCHAR(100) NULL,
   `admin` TINYINT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;

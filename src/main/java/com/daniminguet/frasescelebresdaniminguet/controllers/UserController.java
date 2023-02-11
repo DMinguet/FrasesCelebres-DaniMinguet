@@ -87,16 +87,12 @@ public class UserController {
 
     @PostMapping("/login")
     public Usuario login(@RequestBody Usuario user) {
-        try {
-            for (Usuario usuario: getUsers()) {
-                if (usuario.getNombre().equals(user.getNombre()) && user.getContrasenya().equals(usuario.getContrasenya())) {
-                    return usuario;
-                }
+        System.out.println(user);
+        for (Usuario usuario: getUsers()) {
+            if (usuario.getNombre().equals(user.getNombre()) && user.getContrasenya().equals(usuario.getContrasenya())) {
+                return usuario;
             }
-            return null;
-        }catch (Exception e) {
-            e.printStackTrace();
-            return null;
         }
+        return null;
     }
 }
