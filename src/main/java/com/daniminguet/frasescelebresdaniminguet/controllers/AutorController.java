@@ -35,7 +35,7 @@ public class AutorController {
     public boolean addAutor(@RequestBody Autor autor) {
         try {
             Log.i("Nuevo Autor: ", autor.toString());
-            repo.save(autor);
+            repo.saveAndFlush(autor);
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -47,7 +47,7 @@ public class AutorController {
     public boolean updateAutor(@RequestBody Autor autor) {
         try {
             Log.i("Update Autor: ", autor.toString());
-            repo.save(autor);
+            repo.saveAndFlush(autor);
             return true;
         } catch (Exception e){
             Log.e("Update autor", e.getMessage());

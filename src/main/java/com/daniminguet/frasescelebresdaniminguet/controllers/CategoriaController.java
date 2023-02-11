@@ -34,7 +34,7 @@ public class CategoriaController {
     public boolean addCategoria(@RequestBody Categoria categoria) {
         try {
             Log.i("Nueva Categoría: ", categoria.toString());
-            repo.save(categoria);
+            repo.saveAndFlush(categoria);
             return true;
         } catch (Exception e) {
             Log.e("Add Frase", e.getMessage());
@@ -46,7 +46,7 @@ public class CategoriaController {
     public boolean updateCategoria(@RequestBody Categoria categoria) {
         try {
             Log.i("Update Categoria: ", categoria.toString());
-            repo.save(categoria);
+            repo.saveAndFlush(categoria);
             return true;
         } catch (Exception e){
             Log.e("Add frase", e.getMessage());

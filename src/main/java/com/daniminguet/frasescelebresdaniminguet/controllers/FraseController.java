@@ -50,7 +50,7 @@ public class FraseController {
     public boolean addFrase(@RequestBody Frase frase) {
         try {
             Log.i("Nueva Frase: ", frase.toString());
-            repo.save(frase);
+            repo.saveAndFlush(frase);
             return true;
         } catch (Exception e) {
             Log.e("Add Frase", e.getMessage());
@@ -79,7 +79,7 @@ public class FraseController {
     public boolean updateFrase(@RequestBody Frase frase) {
         try {
             Log.i("Update Frase: ", frase.toString());
-            repo.save(frase);
+            repo.saveAndFlush(frase);
             return true;
         } catch (Exception e){
             return false;
