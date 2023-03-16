@@ -33,6 +33,7 @@ public class FraseController {
 
     @GetMapping(value = "/dia/{dia}")
     public Frase getFraseDelDia(@PathVariable("dia") Date dia) {
+        Log.i("er", dia.toString());
         return repo.getFraseDelDia(dia);
     }
 

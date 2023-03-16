@@ -1,3 +1,12 @@
+Utilizo XAMPP para conectar la base de datos con IntelliJ, el usuario por defecto creado es "root" sin contraseña, con el puerto 3306.
+En el archivo "import.sql" ya hay creados dos usuarios, uno administrador y otro que no lo es, la contraseña de los dos es "dani". El puerto utilizado para conectar android con intellij es 8080.
+
+El administrador está representado de tal forma que 1 es administrador y 0 no lo es.
+Lo he puesto así porque en workbench al crear la base de datos no me dejaba poner un boolean, ya que
+automáticamente se cambiaba a "tinyint", y por eso está en Byte.
+
+Creación de la base de datos, los datos están en el archivo "import.sql":
+
 CREATE SCHEMA IF NOT EXISTS `frasescelebres` DEFAULT CHARACTER SET utf8 ;
 USE `frasescelebres` ;
 
